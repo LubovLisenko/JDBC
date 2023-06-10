@@ -29,15 +29,15 @@ public class DatabaseInitService {
 //    }
 
     public static void main(String[] args) {
-        Connection conn = Database.getInstance().getConnection();
-            try {
+       // Connection conn = Database.getInstance().getConnection();
+            try  (Connection conn = Database.getInstance().getConnection()) {
                 String sql = Files.readString(Path.of(INIT_DB_FILENAME));
                 conn.createStatement().executeUpdate(sql);
+              //  conn.close();
 
             } catch (IOException | SQLException e) {
                 throw new RuntimeException(e);
             }
        }
-
-    }
+}
 
