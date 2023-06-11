@@ -34,7 +34,6 @@ public class DatabaseQueryService {
             String sql = Files.readString(Path.of(FIND_MAX_SALARY_WORKER));
             Statement st = conn.createStatement();
             ResultSet rs = st.executeQuery(sql);
-            System.out.println("rs = " + rs);
 
             while (rs.next()){
                 FindMaxSalaryWorker findMaxSalaryWorker = new FindMaxSalaryWorker();
